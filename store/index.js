@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-const API_URL = 'https://fakestoreapi.com/products'
+// const API_URL = 'https://fakestoreapi.com/products'
 // const API_URL = 'https://dummyjson.com/products'
 
 export const state = () => ({
@@ -51,9 +51,10 @@ export const actions = {
   async fetchProducts({ commit }) {
     try {
       commit('SET_LOADING_STATE', false)
-
-      const response = await fetch(API_URL)
-      const data = await response.json();
+      const { default: axios } = await import('axios');
+      // const response = await fetch(API_URL)
+      const response = await axios.get('https://fakestoreapi.com/products')
+      const data = await response.data;
 
       // commit('SET_PRODUCTS', data.products);
       commit('SET_PRODUCTS', data);

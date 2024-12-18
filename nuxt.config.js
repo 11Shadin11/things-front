@@ -65,5 +65,11 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extend(config, { isServer }) {
+      if (isServer) {
+        config.resolve.alias['axios'] = require.resolve('axios');
+      }
+    }
+  },
 };
