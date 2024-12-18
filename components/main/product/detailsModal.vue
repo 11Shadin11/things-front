@@ -2,7 +2,7 @@
   v-dialog(v-model="detailsValue" max-width="800px" persistent)
     v-card.overflow-auto.h-full
       v-card-title( class="headline bg-customColor border") 
-        .flex.justify-between.items-center
+        .flex.justify-between.items-center.w-full
           .text-2xl.py-5.px-2.text-white {{ item.title }}
           v-btn(icon @click="close")
             v-icon mdi-close
